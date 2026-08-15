@@ -1,0 +1,16 @@
+.env
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
+
+# PHP
+vendor/
+composer.lock
+
+# Configurações locais sensíveis (senhas de banco, etc.)
+backend/config/database.php
+
+# Dumps de banco de dados
+*.sql.bak
+*.dump
