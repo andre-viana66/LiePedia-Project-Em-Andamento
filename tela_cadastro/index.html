@@ -17,20 +17,22 @@
             <h1 class="TituloCaixa">Criar Conta</h1>
             <p class="SubtituloCaixa">Junte-se à enciclopédia das mentiras</p>
         </div>
-
+    <form>
+        <fieldset>
         <div class="CaixaFormulario">
             <p class="TexUsuario">Nome de usuário:</p>
-            <input type="Text" id="Usuario" placeholder="Seu nome de usuário">
+            <input type="Text" id="Usuario" placeholder="Seu nome de usuário" required>
             <p class="TextEmail">seu@email.com</p>
-            <input type="email" id="E-mail" placeholder="seu@email.com">
+            <input type="email" id="E-mail" placeholder="seu@email.com" required>
             <p class="TextSenha">Senha:</p>
-            <input type ="password" id="Senha" placeholder="Crie uma senha">
+            <input type ="password" id="Senha" placeholder="Crie uma senha" required>
             <p class="TextConfirmarSenha"> Confirmar senha:</p>
-            <input type="password" id="ConfirmarSenha" placeholder="Confirme sua senha">
+            <input type="password" id="ConfirmarSenha" placeholder="Confirme sua senha" required>
             <br>
             <button type="Submit">Cadastrar</button>
             <p class="TextoEntrar">Já tem uma conta? <a href="#" class="EntrarLink">Entrar</a></p>
         </div>
+        </fieldset>
     </div>
 </body>
 </html>
