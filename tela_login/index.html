@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Liepedia</title>
+    <title>Liepedia - Login</title>
 </head>
 
 <!--COMANDO PARA ADICIONAR COMENT-->
@@ -15,21 +15,62 @@
 <!--CHECK BOX PARA MARCAR-->
 
 <body>
-    <img src ="\Users\pqgam\OneDrive\Documentos\LiePedia Project\Imagens\logo1.png" class = "logo">
-    <div class="conteiner">
-        <div class="caixa">
-            <h1 class="TituloPrimario">Entrar</h1>
-            <p class="Subtitulo">Entre na sua conta para continuar.</p>
-            <p class="TextEmail">E-mail:</p>
-            <input type="email" id="E-mail" placeholder="seu@e-mail.com">
-            <p class="TextUsuario">Usuário:</p>
-            <input type="password" id="Senha" placeholder="Digite sua senha" required>
-            <a class="RefazerSenhaLink" href="#"><br>Esqueceu sua senha?<br></a>
-            <button type="submit">Entrar</button>
-            <p class="TextoCadastro">Não tem uma conta? <a href="#" class="FazerCadastroLink">Cadastra-se</a></p>
-        </div>
+    <head>
+        <img 
+            src ="\Users\pqgam\OneDrive\Documentos\LiePedia Project\Imagens\logo1.png" 
+            class = "logo" 
+            alt="">
+    </head>
 
-        <img src="\Users\pqgam\OneDrive\Documentos\LiePedia Project\Imagens\logo1.png" class="LogoMax">
-    </div>
+        <main>
+
+            <div class="conteiner">
+                <section class="caixa">
+                    <h1 class="TituloPrimario">Entrar</h1>
+
+                    <p class="Subtitulo">Entre na sua conta para continuar.</p>
+
+
+                    <form>
+
+                        <label class="TextEmail" for="email">E-mail:</label>
+
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="seu@e-mail.com"
+                            autocomplete="email"
+                            required
+                            name="email">
+
+
+                        <label class="TextUsuario" for="senha">Senha:</label>
+
+                        <input 
+                            type="password" 
+                            id="senha" 
+                            placeholder="Digite sua senha" 
+                            name="senha"
+                            required>
+
+
+                        <a class="RefazerSenhaLink" href="#">Esqueceu sua senha?</a>
+                        <button type="submit">Entrar</button>
+
+                    </form>
+
+                    <p class="TextoCadastro">
+                        Não tem uma conta? 
+                        <a href="#" class="FazerCadastroLink">
+                            Cadastra-se</a></p>
+
+                </section>
+
+                    <img 
+                        src="\Users\pqgam\OneDrive\Documentos\LiePedia Project\Imagens\logo1.png" 
+                        class="LogoMax" 
+                        alt="Logo do Liepedia">
+            </div>
+    </main>
 </body>   
 </html>
