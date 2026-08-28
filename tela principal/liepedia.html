@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LiePedia - Enciclopédia das Mentiras</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-imagem"><img class="logo" src="Logo.png" alt="logo da liepedia"></div>
+            <h1>LiePedia</h1>
+            <p>enciclopédia das mentiras</p>
+        </div>
+
+        <nav>
+            <a href="liepedia.html">Página principal</a>
+            <a href="">Artigos aleatórios</a>
+            <a href="#">Eventos</a>
+            <a href="#">Categorias</a>
+            <a href="#">Mais mentiras</a>
+
+            <hr>
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main">
+
+        <!-- TOPO -->
+        <header class="header">
+
+            <div class="header-links">
+                <a href="#">Página principal</a>
+                <a href="#">Discussão</a>
+            </div>
+
+            <div class="conta">
+                <button id="btnCriarConta">Criar conta</button>
+                <button id="btnEntrar">Entrar</button>
+                <span>•••</span>
+            </div>
+
+        </header>
+
+
+        <!-- PESQUISA -->
+        <section class="pesquisa">
+
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="Pesquisar na LiePedia"
+            >
+
+            <button id="btnPesquisar">
+                Pesquisar
+            </button>
+
+        </section>
+
+
+        <!-- APRESENTAÇÃO -->
+        <section class="apresentacao">
+
+            <div class="texto-principal">
+                <h2>Bem-vindo à LiePedia,</h2>
+
+                <p>
+                    a enciclopédia das mentiras que você achava
+                    que eram verdade.
+                </p>
+
+                <span id="contadorArtigos">
+                    Atualmente não existem artigos publicados.
+                </span>
+            </div>
+
+            <div class="logo-grande">
+                <img class="logo-principal" src="Logo.png" alt="logo Liepedia">
+            </div>
+
+        </section>
+
+
+        <!-- ARTIGO EM DESTAQUE -->
+        <section class="conteudo-grid">
+
+            <div class="artigo-destaque">
+
+                <h2>Artigo em destaque</h2>
+
+                <!-- O JS vai preencher essa área -->
+                <div id="artigoDestaque">
+
+                    <div class="estado-vazio">
+                        <h3>Nenhum artigo em destaque</h3>
+
+                        <p>
+                            Ainda não existem artigos publicados.
+                            Seja o primeiro a criar uma mentira!
+                        </p>
+
+                        <button id="btnPublicar">
+                            Publicar artigo
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ARTIGOS NOVOS -->
+            <aside class="artigos-novos">
+
+                <h2>Artigos novos</h2>
+
+                <ul id="listaArtigosNovos">
+
+                    <li class="vazio">
+                        Nenhum artigo publicado ainda.
+                    </li>
+
+                </ul>
+
+                <a href="#">Ver mais artigos novos</a>
+
+            </aside>
+
+        </section>
+
+
+        <!-- CATEGORIAS -->
+        <section class="categorias">
+
+            <h2>Categoria em destaque</h2>
+
+            <ul>
+                <li>Conspirações</li>
+                <li>Ciências</li>
+                <li>História</li>
+                <li>Sociedade</li>
+                <li>Tecnologia</li>
+            </ul>
+
+        </section>
+
+
+        <!-- CATEGORIAS INFERIORES -->
+        <section class="navegue">
+
+            <h2>Navegue pelas categorias</h2>
+
+            <div class="categorias-grid">
+
+                <div class="categoria">
+                    <span>🎩</span>
+                    <p>Conspirações</p>
+                </div>
+
+                <div class="categoria">
+                    <span>🧪</span>
+                    <p>Ciências</p>
+                </div>
+
+                <div class="categoria">
+                    <span>📜</span>
+                    <p>História</p>
+                </div>
+
+                <div class="categoria">
+                    <span>👥</span>
+                    <p>Sociedade</p>
+                </div>
+
+                <div class="categoria">
+                    <span>💻</span>
+                    <p>Tecnologia</p>
+                </div>
+
+                <div class="categoria">
+                    <span>🧭</span>
+                    <p>Eventos</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
