@@ -9,7 +9,7 @@ Liepedia é uma enciclopédia colaborativa fictícia, onde os usuários podem cr
 🚧 Em desenvolvimento
 
 - [x] Tela de login (front-end)
-- [ ] Tela de cadastro
+- [x] Tela de cadastro
 - [ ] Tela de pesquisa de artigos
 - [ ] Tela de criação/edição de artigos
 - [ ] Back-end (autenticação, API)
