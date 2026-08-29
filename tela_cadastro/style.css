@@ -66,6 +66,14 @@ button{
     text-align: center;
 }
 
+.MensagemDeErro{
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .EntrarLink{
     color: #2563eb;
     margin-bottom: 16px;
