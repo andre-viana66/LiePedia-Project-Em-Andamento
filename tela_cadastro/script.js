@@ -24,7 +24,11 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
         mensagemErro.textContent= "As senhas não coincidem."; // Exibe uma mensagem de erro se as senhas não coincidirem
     
     }
-
+    
+    if (senha < 8) {
+        console.log("A senha deve ter pelo menos 8 caracteres.")
+        mensagemErro.textContent= "A senha deve ter pelo menos 8 caracteres."; // Exibe uma mensagem de erro se a senha tiver menos de 8 caracteres
+    }
 
     console.log(usuario, email, senha, confirmarSenha); // Exibe os valores no console para verificação
 
