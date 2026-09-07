@@ -120,4 +120,11 @@ button{
 
 }
 
+.MensagemVaziaLogin{
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
 

@@ -127,5 +127,41 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
 
     console.log(usuario, email, senha, confirmarSenha); // Exibe os valores no console para verificação
 
+    fetch("cadastro.php", { // Envia os dados para o arquivo PHP usando fetch o fetch é uma API do JavaScript que permite fazer requisições HTTP de forma assíncrona
+        method: "POST", // Define o método como POST metodo responsavel por enviar dados para o servidor
+
+        headers: { // Define os cabeçalhos da requisição
+            "Content-Type": "application/json" // Define o tipo de conteúdo como JSON
+            },
+
+        body: JSON.stringify({  // Converte os dados em JSON e envia no corpo da requisição
+            usuario,
+            email, 
+            senha,
+            confirmarSenha 
+        }) // Converte os dados em JSON e envia no corpo da requisição
+    })
+
+    .then(function(response) { // Recebe a resposta do servidor
+        return response.json(); // Converte a resposta em JSON})
+    })
+
+    .then(function(data) { // Recebe os dados do servidor
+
+        if (data.sucesso) { // Verifica se o cadastro foi bem-sucedido
+            console.log("Cadastro realizado com sucesso!"); // Exibe uma mensagem de sucesso no console
+            window.location.href = "login.html"; // Redireciona para a página de login
+        } else {
+            console.log("Erro ao realizar o cadastro:", data.mensagem); // Exibe a mensagem de erro retornada pelo servidor
+            mensagemErro.textContent = "Erro ao realizar o cadastro" // Exibe a mensagem de erro retornada pelo servidor
+        }   
+    })
+
+    .catch(function(error) { // Captura qualquer erro que ocorra durante a requisição
+        console.error("Erro na requisição:", error); // Exibe o erro no console}
+        mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
+    })
+
+
 });
 
