@@ -10,6 +10,7 @@ composer.lock
 
 # Configurações locais sensíveis (senhas de banco, etc.)
 backend/config/database.php
+../config/database.php
 
 # Dumps de banco de dados
 *.sql.bak

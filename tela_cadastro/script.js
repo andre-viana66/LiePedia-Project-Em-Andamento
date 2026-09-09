@@ -143,7 +143,7 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
     })
 
     .then(function(response) { // Recebe a resposta do servidor
-        return response.json(); // Converte a resposta em JSON})
+        return response.json(); // Converte a resposta em JSON
     })
 
     .then(function(data) { // Recebe os dados do servidor
@@ -153,7 +153,7 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
             window.location.href = "login.html"; // Redireciona para a página de login
         } else {
             console.log("Erro ao realizar o cadastro:", data.mensagem); // Exibe a mensagem de erro retornada pelo servidor
-            mensagemErro.textContent = "Erro ao realizar o cadastro" // Exibe a mensagem de erro retornada pelo servidor
+            mensagemErro.textContent = data.mensagem; // Exibe a mensagem de erro retornada pelo servidor
         }   
     })
 
