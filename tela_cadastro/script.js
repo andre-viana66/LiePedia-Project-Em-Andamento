@@ -150,10 +150,10 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
 
         if (data.sucesso) { // Verifica se o cadastro foi bem-sucedido
             console.log("Cadastro realizado com sucesso!"); // Exibe uma mensagem de sucesso no console
-            window.location.href = "login.html"; // Redireciona para a página de login
+            window.location.href = "../tela_login/login-index.html"; // Redireciona para a página de login
         } else {
             console.log("Erro ao realizar o cadastro:", data.mensagem); // Exibe a mensagem de erro retornada pelo servidor
-            mensagemErro.textContent = data.mensagem; // Exibe a mensagem de erro retornada pelo servidor
+            mensagemErro.textContent = "Erro ao realizar o cadastro"; // Exibe a mensagem de erro retornada pelo servidor
         }   
     })
 
