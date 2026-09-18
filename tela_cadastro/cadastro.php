@@ -10,10 +10,10 @@ $senha = trim($dados['senha'] ?? ''); // Obtém o valor do campo 'senha' e remov
 $confirmarSenha = trim($dados['confirmarSenha'] ?? ''); // Obtém o valor do campo 'confirmarSenha' e remove espaços em branco e define como string vazia se não estiver definido
 
 if (empty($usuario) || empty($email) || empty($senha) || empty($confirmarSenha)) {
-    echo json_encode([
+    echo json_encode(array(
         'sucesso' => false,
         'mensagem' => 'Todos os campos são obrigatórios.'
-        ]); // Retorna uma resposta JSON indicando que todos os campos são obrigatórios
+        )); // Retorna uma resposta JSON indicando que todos os campos são obrigatórios
     exit; // Encerra a execução do script
 }
 

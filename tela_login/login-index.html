@@ -7,12 +7,6 @@
     <title>Liepedia - Login</title>
 </head>
 
-<!--COMANDO PARA ADICIONAR COMENT-->
-<!--TODA IMAGEM TEM QUE TER LEGENDA-->
-<!--O FORMULARIO É A INTERASÃO DO USUARIO COM O SERVIDOR-->
-<!--PERSISTENCIA DE DADOS NO CLIENTE É FEITA SOMENTE PARA MELHOR EXPERIÊNCIA DO USUARIO, É NECESSARIO REALIZAR A VERIFICACAO NO SERVER-->
-<!--TEXT AREA PARA UTILIZAR PARA O ARTIGO-->
-<!--CHECK BOX PARA MARCAR-->
 
 <body>
     <head>
@@ -40,7 +34,9 @@
                             id="email" 
                             placeholder="seu@e-mail.com"
                             autocomplete="email"
-                            name="email">
+                            name="email"
+                            required
+                            >
 
 
                         <label class="TextUsuario" for="senha">Senha:</label>
@@ -49,7 +45,9 @@
                             type="password" 
                             id="senha" 
                             placeholder="Digite sua senha" 
-                            name="senha">
+                            name="senha"
+                            required
+                            >
 
 
                         <a class="RefazerSenhaLink" href="#">Esqueceu sua senha?</a>

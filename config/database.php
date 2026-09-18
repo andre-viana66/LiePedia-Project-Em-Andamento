@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost'; // Host do banco de dados
-$porta = 'SUA PORTA'; // Porta do banco de dados
+$porta = '5432'; // Porta do banco de dados
 $nomeBanco = "Liepedia-Database"; // Nome do banco de dados
 $usuario = "postgres"; // Usuário do banco de dados
 $senha = "SUA SENHA"; // Senha do banco de dados
