@@ -17,3 +17,12 @@ btnEntrar.addEventListener('click', function() {
     // ../ sobe uma pasta (sai de tela_principal) e entra em tela_login
     window.location.href = '../tela_login/login-index.html';
 });
+
+fetch("cadastro.php", { // Envia os dados para o arquivo PHP usando fetch o fetch é uma API do JavaScript que permite fazer requisições HTTP de forma assíncrona
+    method: "POST", // Define o método como POST metodo responsavel por enviar dados para o servidor
+
+    headers: { // Define os cabeçalhos da requisição
+        "Content-Type": "application/json" // Define o tipo de conteúdo como JSON
+        },
+    
+})

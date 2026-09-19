@@ -64,6 +64,38 @@ if (!preg_match('/[\W_]/', $senha)) { //verifica se a senha contém pelo menos u
     exit; // Encerra a execução do script
 }
 
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+try{
+    $smt = $pdo->prepare("SELECT ID FROM usuarios WHERE senha = :senha OR email = :email"); // Prepara uma consulta SQL para verificar se o usuário ou email já existe
+    $smt->execute(['senha' => $senha, 'email' => $email]); // Executa a consulta SQL com os parâmetros fornecidos
+    
+    if ($smt->fetch()){ //Verifica se o usuário e senha já existe no banco de dados
+        echo json_encode([
+            'sucesso' => true,
+            'mensagem' => 'Login feito com sucesso'
+        ]); //Retorna uma mensagem de sucesso ao cliente
+        exit;
+    } else{ //Caso não exista nenhum usuário no banco de dados retorna uma mensagem negativa
+        echo json_encode([
+            'sucesso' => false,
+            'mensagem'=> 'usuário ou senha incorretos'
+        ]);
+    };
+    
+} catch (PDOException $e) {
+    echo json_encode([ // Retorna uma resposta JSON indicando que houve um erro ao realizar o cadastro
+        'sucesso' => false,
+        'mensagem' => 'Erro ao realizar o cadastro: ' . $e->getMessage()
+    ]); // Retorna uma resposta JSON indicando que houve um erro ao realizar o cadastro
+    exit; // Encerra a execução do script
+}
+    
+
+
+
+
+
 
 
 

@@ -9,26 +9,25 @@
 
 
 <body>
-    <head>
-        <img 
-            src ="..\Imagens\logo1.png" 
-            class = "logo" 
-            alt="">
-    </head>
+
+    <img 
+        src ="..\Imagens\logo1.png" 
+        class = "logo" 
+        alt="">
 
         <main>
 
             <div class="conteiner">
+                
                 <section class="caixa">
                     <h1 class="TituloPrimario">Entrar</h1>
 
                     <p class="Subtitulo">Entre na sua conta para continuar.</p>
-
-
+                    
                     <form id="FormularioLogin">
 
                         <label class="TextEmail" for="email">E-mail:</label>
-
+                    
                         <input 
                             type="email" 
                             id="email" 
@@ -41,13 +40,19 @@
 
                         <label class="TextUsuario" for="senha">Senha:</label>
 
-                        <input 
-                            type="password" 
-                            id="senha" 
-                            placeholder="Digite sua senha" 
-                            name="senha"
-                            required
-                            >
+                        <div class="Label_senha">
+                            <input 
+                                type="password" 
+                                id="senha" 
+                                placeholder="Digite sua senha" 
+                                name="senha"
+                                required>
+                            <img
+                                src="../Imagens/icons_olho_fechado.png"
+                                class="icon_olhos_abertos"
+                                id="iconeOlho"
+                                alt="Visualizar senha">
+                        </div>
 
 
                         <a class="RefazerSenhaLink" href="#">Esqueceu sua senha?</a>

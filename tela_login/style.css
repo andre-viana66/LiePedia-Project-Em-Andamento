@@ -50,12 +50,14 @@ body{
 
 input{
     width: 100%;
-    height: 20px;
+    height: 20px;              /* reduzido de 44px para 38px */
     border: 1px solid #d1d5db;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13px;           /* reduzido de 14px para 13px */
     font-family: 'Inter', sans-serif;
     margin-bottom: 16px;
+    padding: 0 10px;           /* reduzido de 12px para 10px */
+    box-sizing: border-box;
 }
 
 input:focus{
@@ -126,5 +128,26 @@ button{
     font-size: 14px;
     margin-top: 10px;
     text-align: center;
+}
+
+.Label_senha{
+    position: relative;
+    margin-bottom: 16px;
+    
+}
+
+.Label_senha input{
+    padding-right: 40px;
+    margin-bottom: 0;          
+}
+
+.icon_olhos_abertos{
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 12px;
 }
 

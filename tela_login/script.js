@@ -1,6 +1,7 @@
 var FormularioLogin = document.getElementById("FormularioLogin");
 const mensagemErro = document.getElementById("MensagemVaziaLogin"); // Obtém o elemento de mensagem de erro
-
+const mostrar_senha = document.getElementById("iconeOlho"); //Obtem imagem do HTML
+const CampoSenha = document.getElementById("senha") //Obtem o campo de input do HTML
 
 function ValidarEspacosEmBrancoLogin(email, senha) {
     return (email.trim() === "" || senha.trim() === ""); // Verifica se algum dos campos está vazio
@@ -109,7 +110,7 @@ FormularioLogin.addEventListener("submit", function (event) {
     .then(function (data) { // Recebe os dados do servidor
         if (data.sucesso) { // Verifica se o login foi bem-sucedido
             console.log("Login bem-sucedido!"); // Exibe uma mensagem de sucesso no console
-            window.location.href = "liepedia.html"; // Redireciona para a tela inicial
+            window.location.href = "../tela_principal/liepedia.html"; // Redireciona para a tela inicial
         } else {
             mensagemErro.textContent = data.mensagem; // Exibe a mensagem de erro recebida do servidor
             console.log(data.mensagem); // Exibe a mensagem de erro no console
@@ -120,3 +121,16 @@ FormularioLogin.addEventListener("submit", function (event) {
         mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
     });
 });
+
+
+mostrar_senha.addEventListener('click', function() {
+    if (CampoSenha.type === 'password') {
+        CampoSenha.type = 'text';
+        mostrar_senha.src = '../Imagens/icons_olho_aberto.png';
+        mostrar_senha.alt = 'Visualizar senha;'
+    } else {
+        CampoSenha.type = 'password';
+        mostrar_senha.src = '../Imagens/icons_olho_fechado.png';
+    }
+});
+
