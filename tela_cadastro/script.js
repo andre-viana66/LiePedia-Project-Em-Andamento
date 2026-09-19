@@ -1,5 +1,7 @@
 var formulario = document.getElementById("FormCadastro"); // Obtém o elemento do formulário pelo ID
 const mensagemErro = document.getElementById("MensagemErro"); // Obtém o elemento de mensagem de erro pelo ID
+const campo = document.getElementById("senha"); //Pega o input de senha do HTML
+const icon = document.getElementById("Icon_Olhos_Fechados_Senha") //Pega o icone de senha do HTML
 
 
 
@@ -164,4 +166,17 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
 
 
 });
+
+icon.addEventListener('click', function() {
+    if (campo.type === 'password') {
+        campo.type = 'text';
+        icon.src = '../Imagens/icons_olho_aberto.png';
+        icon.alt = 'Visualizar senha';
+    }else{
+        campo.type = "password";
+        icon.src = '../Imagens/icons_olho_fechado.png';
+    };
+
+});
+
 

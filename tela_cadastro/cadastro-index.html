@@ -7,13 +7,11 @@
     <title>Liepedia - Cadastro</title>
 </head>
 
-<body>
-    <head>
-        <img 
-            src="..\Imagens\logo1.png" 
-            class="Logo"
-            alt="">
-    </head>
+<body>   
+     <img 
+        src="..\Imagens\logo1.png" 
+        class="Logo"
+        alt="">   
     <main>
         <div class="Fundo">
             <section class="CaixaCadastro">
@@ -43,13 +41,22 @@
 
                     <label class="TextSenha" for="senha">Senha:</label>
 
-                    <input 
-                        type ="password"
-                        required
-                        id="senha" 
-                        placeholder="Crie uma senha" 
-                        name="senha">
+                    <div class="LabelOlhosFechadosSenha">
 
+                        <input 
+                            type ="password"
+                            required
+                            id="senha" 
+                            placeholder="Crie uma senha" 
+                            name="senha">
+
+                        <img
+                            src="../Imagens/icons_olho_fechado.png"
+                            class="Icon_Olhos_Fechados_Senha"
+                            alt="Senha escondida"
+                            id="Icon_Olhos_Fechados_Senha">
+
+                    </div>
 
 
                     <label class="TextConfirmarSenha" for="confirmar-senha">Confirmar senha:</label>
