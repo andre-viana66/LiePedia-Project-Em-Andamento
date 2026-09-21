@@ -1,207 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>LiePedia - Enciclopédia das Mentiras</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liepedia — a wikipédia das mentiras</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- MENU LATERAL -->
-    <aside class="sidebar">
 
-        <div class="logo">
-            <div class="logo-imagem"><img class="logo" src="Logo.png" alt="logo da liepedia"></div>
-            <h1>LiePedia</h1>
-            <p>enciclopédia das mentiras</p>
-        </div>
+  <!--CABEÇALHO-->
+  <header class="barra-superior">
 
-        <nav>
-            <a href="liepedia.html">Página principal</a>
-            <a href="">Artigos aleatórios</a>
-            <a href="#">Eventos</a>
-            <a href="#">Categorias</a>
-            <a href="#">Mais mentiras</a>
+    <!--Barra lateral tres traços-->
+    <button class="barra-superior__menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false">☰</button>
 
-            <hr>
-        </nav>
+    <!--Barra lateral Logo-->
+    <div class="barra-superior__logo">
+      <span class="barra-superior__selo">
+        <img src="logo.png" alt="Logo da Liepedia">
+      </span>
+      <div>
+        <h1>Liepedia</h1>
+        <p>A wikipédia das mentiras</p>
+      </div>
+    </div>
 
+
+    <!--barra de pesquisa-->
+    <div class="barra-superior__busca">
+      <input type="text" id="campoBusca" placeholder="Pesquisar artigos...">
+      <button id="botaoBusca" aria-label="Pesquisar">🔍</button>
+    </div>
+
+    <!--barra lateral de conta-->
+    <div class="barra-superior__conta">
+      <a href="#" class="botao botao--contorno" id="linkEntrar">Entrar</a>
+      <a href="#" class="botao botao--solido" id="linkCriarConta">Criar conta</a>
+    </div>
+  </header>
+
+  <div class="pagina">
+
+    <!-- Fundo escurecido atrás do menu, usado só no mobile pra fechar ao clicar fora -->
+    <div class="barra-lateral__fundo" id="fundoMenu"></div>
+
+    <!--BARRA LATERAL CONTEUDO-->
+    <aside class="barra-lateral" id="barraLateral">
+      <nav class="barra-lateral__nav">
+        <a href="#" class="ativo"><span>🏠</span>Página principal</a>
+        <a href="#"><span>🎲</span>Artigos aleatórios</a>
+        <a href="#"><span>👥</span>Comunidade</a>
+        <a href="#"><span>✍️</span>Criar artigo</a>
+        <a href="#"><span>ℹ️</span>Sobre a Liepedia</a>
+        <a href="#"><span>✉️</span>Contato</a>
+      </nav>
+
+      <!--Barra lateral dp mini texto-->
+      <blockquote class="caixa-citacao">
+        <span class="caixa-citacao__aspas">“</span>
+        <p>Aqui, a verdade tira férias e a mentira escreve a história.</p>
+        <cite>— Liepedia</cite>
+      </blockquote>
     </aside>
 
+    <!--CONTEÚDO PRINCIPAL-->
+    <main class="conteudo">
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="main">
+      <!-- Banner de boas-vindas -->
+      <section class="banner">
+        <div class="banner__texto">
+          <h2>Bem-vindo à Liepedia,</h2>
+          <p class="banner__subtitulo">a enciclopédia colaborativa das mentiras!</p>
+          <p class="banner__descricao">
+            Aqui você encontra histórias inventadas, fatos distorcidos
+            e informações 100% falsas (ou não).
+          </p>
+          <a href="#artigosDestaque" class="botao botao--solido botao--grande">Explorar artigos</a>
+        </div>
+        <div class="banner__emblema" aria-hidden="true">
+          <img src="logo.png" alt="Logo da Liepedia">
+        </div>
+      </section>
 
-        <!-- TOPO -->
-        <header class="header">
+      <!-- Artigos em destaque -->
+      <section class="secao-destaque" id="artigosDestaque">
+        <div class="secao-destaque__cabecalho">
+          <h3>Artigos em destaque</h3>
+          <a href="#" class="secao-destaque__ver-todos">Ver todos</a>
+        </div>
 
-            <div class="header-links">
-                <a href="#">Página principal</a>
-                <a href="#">Discussão</a>
-            </div>
-
-            <div class="conta">
-                <button id="btnCriarConta">Criar conta</button>
-                <button id="btnEntrar">Entrar</button>
-                <span>•••</span>
-            </div>
-
-        </header>
-
-
-        <!-- PESQUISA -->
-        <section class="pesquisa">
-            <input
-                type="text"
-                id="campoPesquisa"
-                placeholder="Pesquisar na LiePedia"
-            >
-
-            <button id="btnPesquisar">
-                Pesquisar
-            </button>
-
-        </section>
-
-
-        <!-- APRESENTAÇÃO -->
-        <section class="apresentacao">
-
-            <div class="texto-principal">
-                <h2>Bem-vindo à LiePedia,</h2>
-
-                <p>
-                    a enciclopédia das mentiras que você achava
-                    que eram verdade.
-                </p>
-
-                <span id="contadorArtigos">
-                    Atualmente não existem artigos publicados.
-                </span>
-            </div>
-
-            <div class="logo-grande">
-                <img class="logo-principal" src="Logo.png" alt="logo Liepedia">
-            </div>
-
-        </section>
-
-
-        <!-- ARTIGO EM DESTAQUE -->
-        <section class="conteudo-grid">
-
-            <div class="artigo-destaque">
-
-                <h2>Artigo em destaque</h2>
-
-                <!-- O JS vai preencher essa área -->
-                <div id="artigoDestaque">
-
-                    <div class="estado-vazio">
-                        <h3>Nenhum artigo em destaque</h3>
-
-                        <p>
-                            Ainda não existem artigos publicados.
-                            Seja o primeiro a criar uma mentira!
-                        </p>
-
-                        <button id="btnPublicar">
-                            Publicar artigo
-                        </button>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ARTIGOS NOVOS -->
-            <aside class="artigos-novos">
-
-                <h2>Artigos novos</h2>
-
-                <ul id="listaArtigosNovos">
-
-                    <li class="vazio">
-                        Nenhum artigo publicado ainda.
-                    </li>
-
-                </ul>
-
-                <a href="#">Ver mais artigos novos</a>
-
-            </aside>
-
-        </section>
-
-
-        <!-- CATEGORIAS -->
-        <section class="categorias">
-
-            <h2>Categoria em destaque</h2>
-
-            <ul>
-                <li>Conspirações</li>
-                <li>Ciências</li>
-                <li>História</li>
-                <li>Sociedade</li>
-                <li>Tecnologia</li>
-            </ul>
-
-        </section>
-
-
-        <!-- CATEGORIAS INFERIORES -->
-        <section class="navegue">
-
-            <h2>Navegue pelas categorias</h2>
-
-            <div class="categorias-grid">
-
-                <div class="categoria">
-                    <span>🎩</span>
-                    <p>Conspirações</p>
-                </div>
-
-                <div class="categoria">
-                    <span>🧪</span>
-                    <p>Ciências</p>
-                </div>
-
-                <div class="categoria">
-                    <span>📜</span>
-                    <p>História</p>
-                </div>
-
-                <div class="categoria">
-                    <span>👥</span>
-                    <p>Sociedade</p>
-                </div>
-
-                <div class="categoria">
-                    <span>💻</span>
-                    <p>Tecnologia</p>
-                </div>
-
-                <div class="categoria">
-                    <span>🧭</span>
-                    <p>Eventos</p>
-                </div>
-
-            </div>
-
-        </section>
+        <div id="grade-destaque" class="secao-destaque__grade">
+          <!-- preenchido via JS: mostra estado vazio ou os cards dos artigos publicados -->
+        </div>
+      </section>
 
     </main>
+  </div>
 
 
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
+  
 </body>
-
 </html>
