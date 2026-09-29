@@ -54,17 +54,24 @@ input:focus{
 }
 
 button{
-    background-color: #2563eb;
+    background-color: #1C2B4A;
     color: white;
     border: none;
-    padding: 4px 124px;
+    padding: 4px 119px;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
+    transition: filter 0.2s ease;
+}
 
+button:hover{
+    opacity: 0.8;
+    filter: brightness(1.15)
 }
 
 .TextoEntrar{
     text-align: center;
+
 }
 
 .MensagemDeErro{

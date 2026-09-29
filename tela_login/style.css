@@ -97,7 +97,7 @@ input:focus{
 }
 
 button{
-    background-color: #2563eb;
+    background-color: #1C2B4A;
     color: white;
     border: none;
     padding: 4px 132px;
@@ -105,7 +105,13 @@ button{
     cursor:pointer;
     font-size: 14px;
     font-weight: 600;
+    transition: filter 0.2s ease;
 
+}
+
+button:hover{
+    opacity: 0.8;
+    filter: brightness(1.15)
 }
 
 .conteiner{
