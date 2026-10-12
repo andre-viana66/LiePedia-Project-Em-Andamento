@@ -1,14 +1,11 @@
 body{
     background-color:white;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.Logo{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    height: 100px;
-    width: 100px;
-}
+
 
 .FundoEsqueceuSenha{
     background-color: white;
@@ -17,7 +14,7 @@ body{
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 300px;
-    margin-left: 120px;
+    margin-left: 400px;
 }
 
 .TituloEsqueceuSenha{
@@ -33,11 +30,6 @@ body{
     margin-bottom: 20px;
 }
 
-.Logo1{
-    position: static;
-    width: 500px;
-    height: auto;
-}
 
 label{
     font-weight: bold;
@@ -74,13 +66,16 @@ button{
     font-weight: bold;
 }
 
+.linkLoginDiv{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
 .LinkLogin{
     color: #2563eb;
-    margin-bottom: 16px;
-    margin-top: 10px;
     text-decoration: none;
-    display: inline;
-    text-align: center;
+
 }
 
 .LinkLogin:hover{
@@ -91,4 +86,35 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Logo{
+    position: absolute;
+    width: 100px;
+    top: 20px;
+    left: 20px;
+}
+
+
+.Logo1{
+    width: 500px;
+    right: 40px;
+    margin-left: 60px;
+}
+
+
+.MensagemErro{
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.MensagemSucesso{
+    color: green;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
 }
