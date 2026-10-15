@@ -56,8 +56,8 @@ if ($smt->fetch()) { // Verifica se o usuário existe no banco de dados
         $envio_email->isHTML(true); // Define que o email será enviado em formato HTML
 
         $envio_email->Subject = 'Recuperação de senha'; // Define o assunto do email
-        $envio_email->Body = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>'; // Define o corpo do email
-        $envio_email->AltBody = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>'; // Define o corpo alternativo do email
+        $envio_email->Body = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>http://localhost:8000/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?senha=dwadwadaw</link>'; // Define o corpo do email
+        $envio_email->AltBody = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>http://localhost:8000/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?senha=dwadwadaw</link>'; // Define o corpo alternativo do email
 
         $envio_email->send();
 
