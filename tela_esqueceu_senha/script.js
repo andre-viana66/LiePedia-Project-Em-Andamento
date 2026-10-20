@@ -44,13 +44,13 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
             console.log("Email enviado com sucesso!"); // Exibe uma mensagem de sucesso no console
             mensagemSucesso.textContent = data.mensagem; // Exibe a mensagem de sucesso recebida do servidor
         } else {
-            mensagemErro.textContent = data.mensagem; // Exibe a mensagem de erro recebida do servidor
+            mensagemSucesso.textContent = data.mensagem; // Exibe a mensagem de erro recebida do servidor
             console.log(data.mensagem); // Exibe a mensagem de erro no console
         }
     })
     .catch(function(error) { // Captura qualquer erro que ocorra durante a requisição
         console.error("Erro na requisição:", error); // Exibe o erro no console
-        mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
+        mensagemSucesso.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
     });
 });
 

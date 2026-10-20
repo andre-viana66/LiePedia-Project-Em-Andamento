@@ -45,7 +45,7 @@ if ($smt->fetch()) { // Verifica se o usuário existe no banco de dados
         $envio_email->Host = 'smtp.gmail.com'; // Define o host do servidor SMTP
         $envio_email->SMTPAuth = true; // Ativa a autenticação SMTP
         $envio_email->Username = 'liepediasuporte@gmail.com'; // Define o nome de usuário para autenticação SMTP
-        $envio_email->Password = 'your password'; // Define a senha para autenticação SMTP
+        $envio_email->Password = "zuhasujubverorhv"; //getenv('email_key'); // Define a senha para autenticação SMTP
         $envio_email->Port = 587; // Define a porta do servidor SMTP
         $envio_email->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Define o tipo de criptografia para a conexão SMTP
         $envio_email->Debugoutput = 'error_log'; // Define o destino do log de depuração do SMTP
@@ -66,12 +66,12 @@ if ($smt->fetch()) { // Verifica se o usuário existe no banco de dados
         if ($envio_email->send()) { // Tenta enviar o email
             echo json_encode([
                 'sucesso' => true,
-                'mensagem' => 'Enviamos um email para você com instruções para redefinir sua senha.'          
+                'mensagem' => 'Se o email existir, você receberá um email com instruções para redefinir sua senha.'          
             ]); // Retorna uma resposta JSON indicando que o email foi enviado com sucesso
         } else {
             echo json_encode([
                 'sucesso' => false,
-                'mensagem' => 'Erro ao enviar o email: ' . $envio_email->ErrorInfo
+                'mensagem' => 'Se o email existir, você receberá um email com instruções para redefinir sua senha.'
             ]); // Retorna uma resposta JSON indicando que houve um erro ao enviar o email
         }
 
@@ -79,14 +79,14 @@ if ($smt->fetch()) { // Verifica se o usuário existe no banco de dados
     } catch (Exception $e) {
         echo json_encode([
             'sucesso' => false,
-            'mensagem' => 'Erro ao enviar o email: ' . $envio_email->ErrorInfo
+            'mensagem' => 'Se o email existir, você receberá um email com instruções para redefinir sua senha.'
         ]); // Retorna uma resposta JSON indicando que houve um erro ao enviar o email
         exit; // Encerra a execução do script
     }
 } else { // Caso não exista nenhum usuário no banco de dados retorna uma mensagem negativa
     echo json_encode([
         'sucesso' => false,
-        'mensagem' => 'Email não encontrado'
+        'mensagem' => 'Se o email existir, você receberá um email com instruções para redefinir sua senha.'
     ]);
 }
 ?>

@@ -77,3 +77,20 @@ button:hover{
     right: 40px;
     margin-left: 60px;
 }
+
+.MensagemErro{
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.MensagemSucesso{
+    color: green;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
