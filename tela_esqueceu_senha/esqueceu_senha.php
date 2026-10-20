@@ -45,7 +45,7 @@ if ($smt->fetch()) { // Verifica se o usuário existe no banco de dados
         $envio_email->Host = 'smtp.gmail.com'; // Define o host do servidor SMTP
         $envio_email->SMTPAuth = true; // Ativa a autenticação SMTP
         $envio_email->Username = 'liepediasuporte@gmail.com'; // Define o nome de usuário para autenticação SMTP
-        $envio_email->Password = "zuhasujubverorhv"; //getenv('email_key'); // Define a senha para autenticação SMTP
+        $envio_email->Password = getenv('email_key'); // Define a senha para autenticação SMTP
         $envio_email->Port = 587; // Define a porta do servidor SMTP
         $envio_email->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Define o tipo de criptografia para a conexão SMTP
         $envio_email->Debugoutput = 'error_log'; // Define o destino do log de depuração do SMTP
