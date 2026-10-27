@@ -2,6 +2,10 @@ const formulario = document.getElementById("FormularioTrocaSenha"); // Obtém o 
 const mensagemErro = document.getElementById("MensagemErro"); // Obtém o elemento de mensagem de erro pelo ID
 const mensagemSucesso = document.getElementById("MensagemSucesso"); // Obtém o elemento de mensagem de sucesso pelo ID
 
+function limparErro(){
+    mensagemErro.textContent = ""; // Limpa a mensagem de erro
+}
+
 formulario.addEventListener("submit", function(event) {
     event.preventDefault();
     const senha = document.getElementById("senha").value; // Obtém o valor do campo de senha
@@ -78,5 +82,7 @@ formulario.addEventListener("submit", function(event) {
         console.error("Erro na requisição:", error); // Exibe o erro no console
         mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
     });
+
+    limparErro();
     
 });

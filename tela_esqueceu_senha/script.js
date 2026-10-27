@@ -8,6 +8,10 @@ function validarEmail(email) {
     return emailRegex.test(email); // Retorna verdadeiro se o email estiver no formato correto
 }
 
+function limparErro(){
+    mensagemErro.textContent = ""; // Limpa a mensagem de erro
+}
+
 formulario.addEventListener("submit", function(event) { //Cria um evento de escuta para o envio do formulário
     event.preventDefault(); // Impede o envio do formulário
     const email = document.getElementById("email").value; // Obtém o valor do campo de email
@@ -52,5 +56,7 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
         console.error("Erro na requisição:", error); // Exibe o erro no console
         mensagemSucesso.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
     });
+
+    limparErro();
 });
 

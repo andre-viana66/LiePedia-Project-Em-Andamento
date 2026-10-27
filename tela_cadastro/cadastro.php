@@ -107,7 +107,6 @@ try {
 
     $smt = $pdo->prepare("INSERT INTO usuarios (usuario, email, senha) VALUES (:usuario, :email, :senha)"); // Prepara uma consulta SQL para inserir um novo usuário
     $smt->execute(['usuario' => $usuario, 'email' => $email, 'senha' => $senhaHash]); // Executa a consulta SQL com os parâmetros fornecidos
-
     echo json_encode([ // Retorna uma resposta JSON indicando que o cadastro foi realizado com sucesso
         'sucesso' => true,
         'mensagem' => 'Cadastro realizado com sucesso.'
