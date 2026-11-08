@@ -15,3 +15,5 @@ backend/config/database.php
 # Dumps de banco de dados
 *.sql.bak
 *.dump
+.vercel
+.env*

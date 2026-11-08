@@ -1,0 +1,5 @@
+# Arquivos que NÃO sobem para a Vercel (senhas e coisas só de desenvolvimento)
+*.env
+.env
+.vscode
+database

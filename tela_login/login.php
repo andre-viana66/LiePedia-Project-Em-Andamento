@@ -67,10 +67,11 @@ if (!preg_match('/[\W_]/', $senha)) { //verifica se a senha contém pelo menos u
 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
 try{
-    $smt = $pdo->prepare("SELECT ID FROM usuarios WHERE senha = :senha OR email = :email"); // Prepara uma consulta SQL para verificar se o usuário ou email já existe
-    $smt->execute(['senha' => $senha, 'email' => $email]); // Executa a consulta SQL com os parâmetros fornecidos
-    
-    if ($smt->fetch()){ //Verifica se o usuário e senha já existe no banco de dados
+    $smt = $pdo->prepare("SELECT senha FROM usuarios WHERE email = :email"); // Busca o hash da senha salvo para esse email
+    $smt->execute(['email' => $email]); // Executa a consulta SQL com os parâmetros fornecidos
+    $hashSalvo = $smt->fetchColumn();
+
+    if ($hashSalvo && password_verify($senha, $hashSalvo)){ // Compara a senha digitada com o hash salvo no cadastro
         echo json_encode([
             'sucesso' => true,
             'mensagem' => 'Login feito com sucesso'

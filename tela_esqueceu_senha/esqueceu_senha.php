@@ -59,7 +59,7 @@ if ($usuarioId) { // Verifica se o usuário existe no banco de dados
         $envio_email->Host = 'smtp.gmail.com'; // Define o host do servidor SMTP
         $envio_email->SMTPAuth = true; // Ativa a autenticação SMTP
         $envio_email->Username = 'liepediasuporte@gmail.com'; // Define o nome de usuário para autenticação SMTP
-        $envio_email->Password ="your password";//getenv('email_key'); // Define a senha para autenticação SMTP
+        $envio_email->Password = getenv('EMAIL_PASSWORD'); // senha de app do Gmail: fica no .env (PC) e nas Environment Variables (Vercel), nunca no código
         $envio_email->Port = 587; // Define a porta do servidor SMTP
         $envio_email->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Define o tipo de criptografia para a conexão SMTP
         $envio_email->Debugoutput = 'error_log'; // Define o destino do log de depuração do SMTP
@@ -69,10 +69,10 @@ if ($usuarioId) { // Verifica se o usuário existe no banco de dados
         $envio_email->addAddress($email); // Adiciona o endereço de email do destinatário
         $envio_email->isHTML(true); // Define que o email será enviado em formato HTML
 
+        $site = (getenv('VERCEL') ? 'https://' : 'http://') . $_SERVER['HTTP_HOST']; // localhost:8000 no PC, endereço da Vercel na nuvem
         $envio_email->Subject = 'Recuperação de senha'; // Define o assunto do email
-        $envio_email->Body = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>http://localhost:8000/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?token=</link> Seu token é: ' . $token; // Define o corpo do email
-        $envio_email->AltBody = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>http://localhost:8000/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?token=</link> Seu token é: ' . $token; // Define o corpo alternativo do email
-        $envio_email->send(); // Envia o email
+        $envio_email->Body = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>' . $site . '/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?token=</link> Seu token é: ' . $token; // Define o corpo do email
+        $envio_email->AltBody = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>' . $site . '/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?token=</link> Seu token é: ' . $token; // Define o corpo alternativo do email
 
         if ($envio_email->send()) { // Tenta enviar o email
             echo json_encode([

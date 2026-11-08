@@ -1,0 +1,12 @@
+{
+  "regions": ["gru1"],
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.4"
+    }
+  },
+  "routes": [
+    { "src": "/", "status": 308, "headers": { "Location": "/tela_principal/liepedia.html" } },
+    { "src": "/(.*)\\.php", "dest": "/api/index.php?arquivo=$1" }
+  ]
+}
