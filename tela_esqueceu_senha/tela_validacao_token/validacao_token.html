@@ -4,31 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Liepedia - Validação de Token</title>
+    <title>Liepedia - Validar token</title>
 </head>
 <body>
     <img 
-        src="..\..\Imagens\\logo1.png" 
+        src="../../Imagens/logo1.png" 
         class="Logo"
         alt="">
     <main>
         <div class="FundoValidacaoToken">
             <section class="ValidacaoToken">
-                <h1 class="TituloValidacaoToken">Validação de Token</h1>
-                <p class="Subtitulo">Informe o token enviado para o seu e-mail</p>
-                <form class="FormularioValidacaoToken" id="FormularioValidacaoToken">
+                <h1 class="TituloValidacaoToken">Validar token</h1>
+                <p class="Subtitulo">Informe o token de 6 caracteres enviado para o seu e-mail.</p>
+                <form class="FormularioValidacaoToken" id="FormularioValidacaoToken" novalidate>
 
-                    <label class="TextToken" for="Token">Token:</label>
+                    <label class="TextToken" for="token">Token</label>
                     <input
                         type="text"
                         class="LabelToken"
                         id="token"
                         required
                         name="token"
-                        placeholder="Digite o token">
+                        placeholder="Ex.: a1b2c3"
+                        maxlength="6"
+                        autocomplete="one-time-code"
+                        autocapitalize="off"
+                        spellcheck="false">
 
-                    <p class="MensagemErro" id="MensagemErro"></p>
-                    <p class="MensagemSucesso" id="MensagemSucesso"></p>
+                    <p class="MensagemErro" id="MensagemErro" role="alert"></p>
+                    <p class="MensagemSucesso" id="MensagemSucesso" role="status"></p>
 
                     <button type="submit" class="BtnValidarToken">Validar token</button>
 
@@ -38,7 +42,8 @@
     </main>
     <script src="script.js"></script>
     <img 
-        src="..\..\Imagens\\logo1.png" 
+        src="../../Imagens/logo1.png" 
         class="Logo1"
         alt="">
 </body>
+</html>

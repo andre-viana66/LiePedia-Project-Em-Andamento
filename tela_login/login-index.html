@@ -11,7 +11,7 @@
 <body>
 
     <img 
-        src ="..\Imagens\logo1.png" 
+        src="../Imagens/logo1.png" 
         class = "logo" 
         alt="">
 
@@ -24,21 +24,21 @@
 
                     <p class="Subtitulo">Entre na sua conta para continuar.</p>
                     
-                    <form id="FormularioLogin">
+                    <form id="FormularioLogin" novalidate>
 
-                        <label class="TextEmail" for="email">E-mail:</label>
+                        <label class="TextEmail" for="email">E-mail</label>
                     
                         <input 
                             type="email" 
                             id="email" 
-                            placeholder="seu@e-mail.com"
+                            placeholder="seu@email.com"
                             autocomplete="email"
                             name="email"
                             required
                             >
 
 
-                        <label class="TextUsuario" for="senha">Senha:</label>
+                        <label class="TextUsuario" for="senha">Senha</label>
 
                         <div class="Label_senha">
                             <input 
@@ -46,31 +46,39 @@
                                 id="senha" 
                                 placeholder="Digite sua senha" 
                                 name="senha"
+                                autocomplete="current-password"
                                 required>
-                            <img
-                                src="../Imagens/icons_olho_fechado.png"
-                                class="icon_olhos_abertos"
-                                id="iconeOlho"
-                                alt="Visualizar senha">
+                            <button
+                                type="button"
+                                class="BotaoOlho"
+                                id="botaoOlho"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false">
+                                <img
+                                    src="../Imagens/icons_olho_fechado.png"
+                                    class="icon_olhos_abertos"
+                                    id="iconeOlho"
+                                    alt="">
+                            </button>
                         </div>
 
 
                         <a class="RefazerSenhaLink" href="../tela_esqueceu_senha/esqueceu_senha.html">Esqueceu sua senha?</a>
                         <button type="submit">Entrar</button>
 
-                        <p class="MensagemVaziaLogin" id="MensagemVaziaLogin"></p>
+                        <p class="MensagemVaziaLogin" id="MensagemVaziaLogin" role="alert"></p>
 
                     </form>
 
                     <p class="TextoCadastro">
                         Não tem uma conta? 
                         <a href="../tela_cadastro/cadastro-index.html" class="FazerCadastroLink">
-                            Cadastra-se</a></p>
+                            Cadastre-se</a></p>
 
                 </section>
 
                     <img 
-                        src ="..\Imagens\logo1.png" 
+                        src="../Imagens/logo1.png" 
                         class="LogoMax" 
                         alt="Logo do Liepedia">
             </div>

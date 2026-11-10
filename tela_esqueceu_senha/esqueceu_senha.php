@@ -45,7 +45,7 @@ if ($usuarioId) { // Verifica se o usuário existe no banco de dados
 
     try {
         $token = bin2hex(random_bytes(3));
-        $tokenHash = password_hash($token, PASSWORD_DEFAULT); // Criptografa o token gerado
+        $tokenHash = hash('sha256', $token); // Criptografa o token gerado
 
         $smtToken = $pdo->beginTransaction(); // Inicia uma transação no banco de dados
         $smtToken = $pdo->prepare("INSERT INTO token_redefinicao (usuario_id, token_hash) 

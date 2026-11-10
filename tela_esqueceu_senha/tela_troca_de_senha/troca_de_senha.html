@@ -9,35 +9,39 @@
 
 <body>
     <img 
-        src="..\..\Imagens\\logo1.png" 
+        src="../../Imagens/logo1.png" 
         class="Logo"
         alt="">
     <main>
         <div class="FundoTrocaSenha">
             <section class="RefazerSenha">
                 <h1 class="TituloTrocaSenha">Redefinir senha</h1>
-                <p class="Subtitulo">Informe a nova senha da sua conta</p>
-                <form class="FormularioTrocaSenha" id="FormularioTrocaSenha">
+                <p class="Subtitulo">Informe a nova senha da sua conta.</p>
+                <form class="FormularioTrocaSenha" id="FormularioTrocaSenha" novalidate>
 
-                    <label class="TextSenha" for="Senha">Nova Senha:</label>
+                    <label class="TextSenha" for="senha">Nova senha</label>
                     <input
                         type="password"
                         class="LabelSenha"
                         id="senha"
                         required
                         name="senha"
-                        placeholder="Digite sua nova senha">
+                        placeholder="Digite sua nova senha"
+                        autocomplete="new-password"
+                        aria-describedby="DicaSenha">
+                    <p class="DicaSenha" id="DicaSenha">Use pelo menos 8 caracteres, com letra maiúscula, letra minúscula, número e caractere especial.</p>
 
-                    <label class="TextConfirmaSenha" for="ConfirmaSenha">Confirmar Senha:</label>
+                    <label class="TextConfirmaSenha" for="confirmaSenha">Confirmar senha</label>
                     <input
                         type="password"
                         class="labelConfirmaSenha"
                         id="confirmaSenha"
                         required
-                        placeholder="Confirme sua nova senha">
+                        placeholder="Confirme sua nova senha"
+                        autocomplete="new-password">
 
-                    <p class="MensagemErro" id="MensagemErro"></p>
-                    <p class="MensagemSucesso" id="MensagemSucesso"></p>
+                    <p class="MensagemErro" id="MensagemErro" role="alert"></p>
+                    <p class="MensagemSucesso" id="MensagemSucesso" role="status"></p>
 
                     <button type="submit" class="BtnAlterarSenha">Alterar senha</button>
 
@@ -47,7 +51,8 @@
     </main>
     <script src="script.js"></script>
     <img 
-        src="..\..\Imagens\\logo1.png" 
+        src="../../Imagens/logo1.png" 
         class="Logo1"
         alt="">
 </body>
+</html>

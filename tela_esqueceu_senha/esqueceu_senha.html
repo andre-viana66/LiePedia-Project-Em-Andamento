@@ -9,16 +9,16 @@
 
 <body>   
      <img 
-        src="..\Imagens\logo1.png" 
+        src="../Imagens/logo1.png" 
         class="Logo"
         alt="">
   <main>
         <div class="FundoEsqueceuSenha">
             <section class="CaixaCadastro">
                 <h1 class="TituloEsqueceuSenha">Esqueceu a senha?</h1>
-                <p class="Subtitulo">Informe o e-mail da sua conta. Enviamos um link para você criar uma nova senha</p>
-                <form class="FormulárioEsqueceuSenha" id="FormEsqueceuSenha">
-                    <label class="Textemail" for="Email">Email:</label>
+                <p class="Subtitulo">Informe o e-mail da sua conta. Enviaremos um link e um token para você criar uma nova senha.</p>
+                <form class="FormulárioEsqueceuSenha" id="FormEsqueceuSenha" novalidate>
+                    <label class="Textemail" for="email">E-mail</label>
                     <input
                         type="email"
                         class="LabelEmail"
@@ -29,8 +29,8 @@
                         autocomplete="email"
                         >
                     <button type="submit" class="BtnEnviar">Enviar link</button>
-                    <p class="MensagemErro" id="MensagemErro"></p>
-                    <p class="MensagemSucesso" id="MensagemSucesso"></p>
+                    <p class="MensagemErro" id="MensagemErro" role="alert"></p>
+                    <p class="MensagemSucesso" id="MensagemSucesso" role="status"></p>
                 </form>
                 <div class="linkLoginDiv">
                     <a class="LinkLogin" href="../tela_login/login-index.html">Voltar para o login</a>
@@ -42,7 +42,8 @@
     <script src="script.js"></script>
 
     <img 
-        src="..\Imagens\logo1.png" 
+        src="../Imagens/logo1.png" 
         class="Logo1"
         alt="">
 </body>
+</html>

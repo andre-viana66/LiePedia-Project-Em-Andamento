@@ -2,6 +2,7 @@ var formulario = document.getElementById("FormCadastro"); // Obtém o elemento d
 const mensagemErro = document.getElementById("MensagemErro"); // Obtém o elemento de mensagem de erro pelo ID
 const campo = document.getElementById("senha"); //Pega o input de senha do HTML
 const icon = document.getElementById("Icon_Olhos_Fechados_Senha") //Pega o icone de senha do HTML
+const botaoOlho = document.getElementById("BotaoOlhoSenha"); // Botão que mostra/esconde a senha
 
 
 
@@ -66,7 +67,7 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
 
     if (ValidarEspacosEmBranco(email, senha, confirmarSenha, usuario)) { // Verifica se algum dos campos está vazio
         console.log("Todos os campos são obrigatórios.");
-        mensagemErro.textContent= "Todos os campos são obrigatórios.";
+        mensagemErro.textContent= "Preencha todos os campos.";
         return; // Exibe uma mensagem de erro se algum campo estiver vazio
     }
 
@@ -78,13 +79,13 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
 
     if (!validarCaracteresEspeciais(usuario)) {
         console.log("O nome de usuário não pode conter caracteres especiais.")
-        mensagemErro.textContent= "O nome de usuário não pode conter caracteres especiais.";
+        mensagemErro.textContent= "Use apenas letras e números no nome de usuário.";
         return; // Exibe uma mensagem de erro se o usuário contiver caracteres especiais
     }
 
     if (!validarEmail(email)) { // Verifica se o email está no formato correto
         console.log("O email não está no formato correto.")
-        mensagemErro.textContent= "O email não está no formato correto."; // Exibe uma mensagem de erro se o email não estiver no formato correto
+        mensagemErro.textContent= "Digite um e-mail no formato nome@exemplo.com."; // Exibe uma mensagem de erro se o email não estiver no formato correto
         return;
     }
 
@@ -127,7 +128,7 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
 
     limparErro(); // Limpa a mensagem de erro antes de exibir os valores no console
 
-    console.log(usuario, email, senha, confirmarSenha); // Exibe os valores no console para verificação
+    console.log("Campos validados, enviando cadastro."); // Não registra a senha no console
 
     fetch("cadastro.php", { // Envia os dados para o arquivo PHP usando fetch o fetch é uma API do JavaScript que permite fazer requisições HTTP de forma assíncrona
         method: "POST", // Define o método como POST metodo responsavel por enviar dados para o servidor
@@ -155,28 +156,23 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
             window.location.href = "../tela_login/login-index.html"; // Redireciona para a página de login
         } else {
             console.log("Erro ao realizar o cadastro:", data.mensagem); // Exibe a mensagem de erro retornada pelo servidor
-            mensagemErro.textContent = "Erro ao realizar o cadastro"; // Exibe a mensagem de erro retornada pelo servidor
+            mensagemErro.textContent = "Não foi possível criar a conta. Confira os dados e tente novamente."; // Mensagem genérica (a do servidor pode conter detalhes técnicos)
         }   
     })
 
     .catch(function(error) { // Captura qualquer erro que ocorra durante a requisição
         console.error("Erro na requisição:", error); // Exibe o erro no console}
-        mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
+        mensagemErro.textContent = "Não foi possível criar a conta. Verifique sua conexão e tente novamente."; // Exibe uma mensagem de erro genérica
     })
 
 
 });
 
-icon.addEventListener('click', function() {
-    if (campo.type === 'password') {
-        campo.type = 'text';
-        icon.src = '../Imagens/icons_olho_aberto.png';
-        icon.alt = 'Visualizar senha';
-    }else{
-        campo.type = "password";
-        icon.src = '../Imagens/icons_olho_fechado.png';
-    };
-
+botaoOlho.addEventListener('click', function() {
+    const mostrando = campo.type === 'password';
+    campo.type = mostrando ? 'text' : 'password';
+    icon.src = mostrando ? '../Imagens/icons_olho_aberto.png' : '../Imagens/icons_olho_fechado.png';
+    botaoOlho.setAttribute('aria-pressed', String(mostrando));
 });
 
 

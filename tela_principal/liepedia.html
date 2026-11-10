@@ -12,12 +12,12 @@
   <header class="barra-superior">
 
     <!--Barra lateral tres traços-->
-    <button class="barra-superior__menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <button class="barra-superior__menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="barraLateral">☰</button>
 
     <!--Barra lateral Logo-->
     <div class="barra-superior__logo">
       <span class="barra-superior__selo">
-        <img src="logo.png" alt="Logo da Liepedia">
+        <img src="Logo.png" alt="">
       </span>
       <div>
         <h1>Liepedia</h1>
@@ -28,8 +28,8 @@
 
     <!--barra de pesquisa-->
     <div class="barra-superior__busca">
-      <input type="text" id="campoBusca" placeholder="Pesquisar artigos...">
-      <button id="botaoBusca" aria-label="Pesquisar">🔍</button>
+      <input type="search" id="campoBusca" placeholder="Pesquisar artigos..." aria-label="Pesquisar artigos">
+      <button id="botaoBusca" aria-label="Pesquisar"><span aria-hidden="true">🔍</span></button>
     </div>
 
     <!--barra lateral de conta-->
@@ -47,17 +47,17 @@
     <!--BARRA LATERAL CONTEUDO-->
     <aside class="barra-lateral" id="barraLateral">
       <nav class="barra-lateral__nav">
-        <a href="#" class="ativo"><span>🏠</span>Página principal</a>
-        <a href="#"><span>🎲</span>Artigos aleatórios</a>
-        <a href="#"><span>👥</span>Comunidade</a>
-        <a href="#"><span>✍️</span>Criar artigo</a>
-        <a href="#"><span>ℹ️</span>Sobre a Liepedia</a>
-        <a href="#"><span>✉️</span>Contato</a>
+        <a href="#" class="ativo" aria-current="page"><span aria-hidden="true">🏠</span>Página principal</a>
+        <a href="#"><span aria-hidden="true">🎲</span>Artigos aleatórios</a>
+        <a href="#"><span aria-hidden="true">👥</span>Comunidade</a>
+        <a href="#"><span aria-hidden="true">✍️</span>Criar artigo</a>
+        <a href="#"><span aria-hidden="true">ℹ️</span>Sobre a Liepedia</a>
+        <a href="#"><span aria-hidden="true">✉️</span>Contato</a>
       </nav>
 
       <!--Barra lateral dp mini texto-->
       <blockquote class="caixa-citacao">
-        <span class="caixa-citacao__aspas">“</span>
+        <span class="caixa-citacao__aspas" aria-hidden="true">“</span>
         <p>Aqui, a verdade tira férias e a mentira escreve a história.</p>
         <cite>— Liepedia</cite>
       </blockquote>
@@ -78,7 +78,7 @@
           <a href="#artigosDestaque" class="botao botao--solido botao--grande">Explorar artigos</a>
         </div>
         <div class="banner__emblema" aria-hidden="true">
-          <img src="logo.png" alt="Logo da Liepedia">
+          <img src="Logo.png" alt="">
         </div>
       </section>
 

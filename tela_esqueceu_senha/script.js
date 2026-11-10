@@ -17,16 +17,17 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
     const email = document.getElementById("email").value; // Obtém o valor do campo de email
 
     if (email.trim() === "") { // Verifica se o campo de email está vazio
-        mensagemErro.textContent = "Por favor, preencha o campo de e-mail."; // Exibe a mensagem de erro
+        mensagemErro.textContent = "Preencha o campo de e-mail."; // Exibe a mensagem de erro
         return; // Interrompe a execução do código
     }
 
     if (!validarEmail(email)) { // Verifica se o email está no formato correto
-        mensagemErro.textContent = "O email não está no formato correto."; // Exibe a mensagem de erro
+        mensagemErro.textContent = "Digite um e-mail no formato nome@exemplo.com."; // Exibe a mensagem de erro
         return; // Interrompe a execução do código
     }
 
-    
+    limparErro();
+    mensagemSucesso.textContent = "";
 
     fetch("esqueceu_senha.php", {
         method: "POST",
@@ -48,15 +49,13 @@ formulario.addEventListener("submit", function(event) { //Cria um evento de escu
             console.log("Email enviado com sucesso!"); // Exibe uma mensagem de sucesso no console
             mensagemSucesso.textContent = data.mensagem; // Exibe a mensagem de sucesso recebida do servidor
         } else {
-            mensagemSucesso.textContent = data.mensagem; // Exibe a mensagem de erro recebida do servidor
+            mensagemErro.textContent = data.mensagem; // Exibe a mensagem de erro recebida do servidor
             console.log(data.mensagem); // Exibe a mensagem de erro no console
         }
     })
     .catch(function(error) { // Captura qualquer erro que ocorra durante a requisição
         console.error("Erro na requisição:", error); // Exibe o erro no console
-        mensagemSucesso.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
+        mensagemErro.textContent = "Não foi possível enviar o e-mail. Verifique sua conexão e tente novamente."; // Exibe uma mensagem de erro genérica
     });
-
-    limparErro();
 });
 

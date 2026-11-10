@@ -143,11 +143,18 @@ h1, h2, h3 {
   background: var(--cor-fundo-suave);
 }
 
+.barra-superior__busca:focus-within {
+  outline: 2px solid var(--cor-azul);
+  outline-offset: 2px;
+}
+
 .barra-superior__busca input {
   flex: 1;
+  min-width: 0;
   border: none;
   background: transparent;
-  outline: none;
+  outline: none; /* o anel de foco fica no contêiner (:focus-within) */
+  font-family: inherit;
   font-size: 14px;
 }
 
@@ -163,6 +170,12 @@ h1, h2, h3 {
   display: flex;
   gap: 10px;
   flex-shrink: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--cor-azul);
+  outline-offset: 2px;
 }
 
 /* ===== LAYOUT GERAL ===== */
@@ -377,6 +390,15 @@ h1, h2, h3 {
   border-radius: var(--raio);
 }
 
+.estado-vazio p {
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.estado-vazio .botao {
+  font-style: normal;
+}
+
 /* ===== RESPONSIVO ===== */
 
 @media (max-width: 900px) {
@@ -403,6 +425,7 @@ h1, h2, h3 {
     transition: transform 0.25s ease;
     z-index: 20;
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .barra-lateral.aberta {
@@ -431,9 +454,18 @@ h1, h2, h3 {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .barra-lateral {
+    transition: none;
+  }
+}
+
 @media (max-width: 520px) {
   .barra-superior {
     flex-wrap: wrap;
+  }
+  .barra-superior__busca input {
+    font-size: 16px; /* evita zoom automático do iOS */
   }
   .barra-superior__busca {
     order: 3;

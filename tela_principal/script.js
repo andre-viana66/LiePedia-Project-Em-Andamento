@@ -78,8 +78,9 @@ function renderizarArtigosDestaque(artigos) {
   if (artigos.length === 0) {
     grade.innerHTML = `
       <div class="estado-vazio">
-        Nenhum artigo foi publicado ainda.<br>
-        Crie uma conta e seja o primeiro a espalhar uma mentira por aqui!
+        <p>Nenhum artigo foi publicado ainda.<br>
+        Crie uma conta e seja o primeiro a espalhar uma mentira por aqui!</p>
+        <a href="../tela_cadastro/cadastro-index.html" class="botao botao--solido">Criar conta</a>
       </div>`;
     return;
   }
@@ -146,18 +147,39 @@ function configurarMenuMobile() {
   const botaoMenu = document.getElementById("botaoMenu");
   const barraLateral = document.getElementById("barraLateral");
   const fundoMenu = document.getElementById("fundoMenu");
+  const telaPequena = window.matchMedia("(max-width: 900px)");
+
+  // No mobile, a barra fechada fica fora da tela: "inert" tira os links dela do Tab
+  function atualizarInert() {
+    barraLateral.inert = telaPequena.matches && !barraLateral.classList.contains("aberta");
+  }
 
   function abrirMenu() {
     barraLateral.classList.add("aberta");
     fundoMenu.classList.add("visivel");
     botaoMenu.setAttribute("aria-expanded", "true");
+    botaoMenu.setAttribute("aria-label", "Fechar menu");
+    atualizarInert();
+    barraLateral.querySelector("a").focus();
   }
 
-  function fecharMenu() {
+  function fecharMenu(devolverFoco = true) {
+    const estavaAberta = barraLateral.classList.contains("aberta");
     barraLateral.classList.remove("aberta");
     fundoMenu.classList.remove("visivel");
     botaoMenu.setAttribute("aria-expanded", "false");
+    botaoMenu.setAttribute("aria-label", "Abrir menu");
+    atualizarInert();
+    if (devolverFoco && estavaAberta && telaPequena.matches) botaoMenu.focus();
   }
+
+  atualizarInert();
+  telaPequena.addEventListener("change", atualizarInert);
+
+  // Esc fecha o menu
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && barraLateral.classList.contains("aberta")) fecharMenu();
+  });
 
   botaoMenu.addEventListener("click", () => {
     const estaAberta = barraLateral.classList.contains("aberta");
@@ -165,11 +187,11 @@ function configurarMenuMobile() {
   });
 
   // fecha ao clicar no fundo escurecido
-  fundoMenu.addEventListener("click", fecharMenu);
+  fundoMenu.addEventListener("click", () => fecharMenu());
 
   // fecha ao clicar em qualquer link do menu (comum no mobile)
   barraLateral.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", fecharMenu);
+    link.addEventListener("click", () => fecharMenu(false));
   });
 }
 

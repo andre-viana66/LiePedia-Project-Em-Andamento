@@ -1,70 +1,96 @@
 body{
-    background-color:white;
-    align-items: center;
-    min-height: 100vh;
+    background-color: white;
+    margin: 0;
+    padding: 24px 16px; /* igual em cima e embaixo: caixa no centro exato */
+    box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    min-height: 100vh;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif; /* mesma pilha da tela principal */
+    color: #1a1a1a;
+}
+
+main{
+    width: 100%;
+    max-width: 340px;
 }
 
 .FundoValidacaoToken{
     background-color: white;
     border-radius: 8px;
-    height: auto;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    max-width: 300px;
-    margin-left: 400px;
 }
 
 .TituloValidacaoToken{
-    font-size:28px;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 4px;
-    color:black;
+    line-height: 1.1;
+    margin: 0 0 4px;
+    color: #1a1a1a;
+    text-wrap: balance;
 }
 
 .Subtitulo{
     color: #666;
     font-size: 14px;
-    margin-bottom: 20px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+    text-wrap: pretty;
 }
 
 label{
+    display: block;
     font-weight: bold;
     font-size: 14px;
-    margin-bottom: 10px;
-    font-family: 'Inter', Sans-serif;
+    margin-bottom: 6px;
 }
-
 
 input{
     width: 100%;
-    height: 20px;
+    min-height: 40px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* evita zoom automático do iOS */
+    font-family: inherit;
     margin-bottom: 16px;
+    padding: 0 10px;
     box-sizing: border-box;
 }
 
+input:focus-visible{
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
+    border-color: #2563eb;
+}
 
 button{
+    display: block;
+    width: 100%;
+    min-height: 40px;
     background-color: #1C2B4A;
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 4px 112px;
+    padding: 10px 16px;
     cursor: pointer;
-    font-size: 12px;
+    font-family: inherit;
+    font-size: 14px;
     font-weight: bold;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    
+    transition: filter 0.2s ease;
 }
 
 button:hover{
-    opacity: 0.8;
-    filter: brightness(1.15)
+    filter: brightness(1.15);
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
 }
 
 .Logo{
@@ -76,26 +102,155 @@ button:hover{
 
 .Logo1{
     width: 500px;
-    right: 40px;
-    margin-left: 60px;
+    max-width: 45vw;
+    height: auto;
+}
+
+.MensagemErro,
+.MensagemSucesso{
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 0 12px;
+    text-align: center;
 }
 
 .MensagemErro{
     color: red;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
 }
-
 
 .MensagemSucesso{
     color: green;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
 }
 
+.MensagemErro:empty,
+.MensagemSucesso:empty{
+    display: none;
+}
 
+/* abaixo disso a logo grande não cabe ao lado do formulário */
+@media (max-width: 900px){
+    .Logo1{
+        display: none;
+    }
+}
 
+/* Desktop: a logo grande já aparece ao lado da caixa, então a pequena do canto sai */
+@media (min-width: 901px){
+    .Logo{
+        display: none;
+    }
+}
+
+/* Celular/tablet: a logo pequena do canto fica; o mesmo espaço em cima e embaixo mantém a caixa centralizada sem ficar por baixo dela */
+@media (max-width: 900px){
+    body{
+        padding-block: 140px;
+    }
+}
+
+/* ===== SUAVIZACAO: fundo, cantos, sombras e transições mais suaves ===== */
+
+body{
+    background-color: white; /* fundo branco: a sombra é o que separa a logo e o formulário */
+}
+
+/* As logos têm fundo próprio (não é branco puro): viram cartões arredondados como a caixa do formulário */
+.Logo1{
+    border-radius: 16px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 16px 40px -12px rgba(0, 0, 0, 0.20); /* sombra neutra, um pouco mais marcada para separar do fundo branco */
+}
+
+.Logo{
+    border-radius: 12px;
+}
+
+.FundoValidacaoToken{
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 16px 40px -12px rgba(0, 0, 0, 0.20); /* sombra neutra, um pouco mais marcada para separar do fundo branco */
+}
+
+input{
+    border-radius: 10px;
+    background-color: white;
+    transition-property: border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+}
+
+input:hover{
+    border-color: #9ca3af;
+}
+
+input:focus-visible{
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.12); /* halo suave em volta do contorno */
+}
+
+button{
+    border-radius: 10px;
+    transition-property: filter, box-shadow, scale;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+}
+
+button:hover{
+    box-shadow: 0 6px 16px -4px rgba(28, 43, 74, 0.35);
+}
+
+button:active{
+    scale: 0.96; /* leve "afundar" ao clicar */
+}
+
+.MensagemErro{
+    color: #dc2626; /* vermelho mais suave e legível: contraste 4.8:1 (antes 4.0:1) */
+}
+
+.MensagemSucesso{
+    color: #15803d; /* verde mais suave, contraste 5.0:1 */
+}
+
+@media (prefers-reduced-motion: reduce){
+    button:active{
+        scale: 1;
+    }
+}
+
+/* ===== PALETA GRAFITE: botões, links e foco no mesmo preto/cinza da logo ===== */
+
+button{
+    background-color: #1f1f1f;
+}
+
+button:hover{
+    box-shadow: 0 6px 16px -4px rgba(31, 31, 31, 0.35);
+}
+
+/* Links da mesma cor do texto: o sublinhado é o que mostra que são clicáveis */
+a[href]{
+    color: #1f1f1f;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+a[href]:hover{
+    text-decoration-thickness: 2px;
+}
+
+input:focus-visible{
+    outline-color: #1f1f1f;
+    border-color: #1f1f1f;
+    box-shadow: 0 0 0 5px rgba(31, 31, 31, 0.10);
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline-color: #1f1f1f;
+}

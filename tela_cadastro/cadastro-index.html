@@ -9,18 +9,18 @@
 
 <body>   
      <img 
-        src="..\Imagens\logo1.png" 
+        src="../Imagens/logo1.png" 
         class="Logo"
         alt="">   
     <main>
         <div class="Fundo">
             <section class="CaixaCadastro">
-                <h1 class="TituloCaixa">Criar Conta</h1>
+                <h1 class="TituloCaixa">Criar conta</h1>
                 <p class="SubtituloCaixa">Junte-se à enciclopédia das mentiras</p>
 
-                <form id="FormCadastro">
+                <form id="FormCadastro" novalidate>
                         
-                    <label class="TexUsuario" for="usuario">usuario:</label>
+                    <label class="TexUsuario" for="usuario">Usuário</label>
                     <input 
                         type="text"
                         id="usuario" 
@@ -30,7 +30,7 @@
                         autocomplete="username">
 
 
-                    <label class="TextEmail" for="email">Email:</label>
+                    <label class="TextEmail" for="email">E-mail</label>
                     <input
                         type="email"
                         required
@@ -39,7 +39,7 @@
                         name="email"
                         autocomplete="email">
 
-                    <label class="TextSenha" for="senha">Senha:</label>
+                    <label class="TextSenha" for="senha">Senha</label>
 
                     <div class="LabelOlhosFechadosSenha">
 
@@ -48,30 +48,41 @@
                             required
                             id="senha" 
                             placeholder="Crie uma senha" 
-                            name="senha">
+                            name="senha"
+                            autocomplete="new-password"
+                            aria-describedby="DicaSenha">
 
-                        <img
-                            src="../Imagens/icons_olho_fechado.png"
-                            class="Icon_Olhos_Fechados_Senha"
-                            alt="Senha escondida"
-                            id="Icon_Olhos_Fechados_Senha">
+                        <button
+                            type="button"
+                            class="BotaoOlho"
+                            id="BotaoOlhoSenha"
+                            aria-label="Mostrar senha"
+                            aria-pressed="false">
+                            <img
+                                src="../Imagens/icons_olho_fechado.png"
+                                class="Icon_Olhos_Fechados_Senha"
+                                alt=""
+                                id="Icon_Olhos_Fechados_Senha">
+                        </button>
 
                     </div>
+                    <p class="DicaSenha" id="DicaSenha">Use pelo menos 8 caracteres, com letra maiúscula, letra minúscula, número e caractere especial.</p>
 
 
-                    <label class="TextConfirmarSenha" for="confirmar-senha">Confirmar senha:</label>
+                    <label class="TextConfirmarSenha" for="confirmar-senha">Confirmar senha</label>
 
                     <input 
                         type="password"
                         required
                         id="confirmar-senha" 
                         placeholder="Confirme sua senha" 
-                        name="confirmar-senha">
+                        name="confirmar-senha"
+                        autocomplete="new-password">
 
 
                     <button type="submit" id="BtnEnviar">Cadastrar</button>
                 
-                    <p class="MensagemDeErro" id="MensagemErro"></p>
+                    <p class="MensagemDeErro" id="MensagemErro" role="alert"></p>
 
                 </form>
 
@@ -82,7 +93,7 @@
             </section>
 
             <img 
-                src="..\Imagens\logo1.png" 
+                src="../Imagens/logo1.png" 
                 class="LogoMax" 
                 alt="Logo do Liepedia">
         </div>

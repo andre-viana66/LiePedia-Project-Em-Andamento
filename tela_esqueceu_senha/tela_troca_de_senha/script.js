@@ -13,7 +13,7 @@ formulario.addEventListener("submit", function(event) {
 
 
     if (senha.trim() === "" || confirmarSenha.trim() === ""){
-        mensagemErro.textContent = "Por favor, preencha todos os campos."; // Exibe a mensagem de erro
+        mensagemErro.textContent = "Preencha todos os campos."; // Exibe a mensagem de erro
         console.log("Por favor, preencha todos os campos."); // Exibe a mensagem de erro no console
         return; // Interrompe a execução do código
     }
@@ -53,7 +53,8 @@ formulario.addEventListener("submit", function(event) {
         console.log("A senha deve conter pelo menos uma letra minúscula.");
         return; // Interrompe a execução do código
     }
-    
+    limparErro();
+    mensagemSucesso.textContent = "";
 
     fetch("/trocar-senha", {
         method: "POST",
@@ -80,9 +81,7 @@ formulario.addEventListener("submit", function(event) {
     })
     .catch(function(error) { // Captura qualquer erro que ocorra durante a requisição
         console.error("Erro na requisição:", error); // Exibe o erro no console
-        mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
+        mensagemErro.textContent = "Não foi possível alterar a senha. Verifique sua conexão e tente novamente."; // Exibe uma mensagem de erro genérica
     });
-
-    limparErro();
     
 });

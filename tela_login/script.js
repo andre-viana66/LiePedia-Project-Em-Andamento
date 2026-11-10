@@ -1,6 +1,7 @@
 var FormularioLogin = document.getElementById("FormularioLogin");
 const mensagemErro = document.getElementById("MensagemVaziaLogin"); // Obtém o elemento de mensagem de erro
-const mostrar_senha = document.getElementById("iconeOlho"); //Obtem imagem do HTML
+const mostrar_senha = document.getElementById("botaoOlho"); // Botão que mostra/esconde a senha
+const iconeOlho = document.getElementById("iconeOlho"); //Obtem imagem do HTML
 const CampoSenha = document.getElementById("senha") //Obtem o campo de input do HTML
 
 function ValidarEspacosEmBrancoLogin(email, senha) {
@@ -48,13 +49,13 @@ FormularioLogin.addEventListener("submit", function (event) {
     const senha = document.getElementById("senha").value; // Obtém o valor do campo de senha
 
     if (ValidarEspacosEmBrancoLogin(email, senha)) { // Verifica se algum dos campos está vazio
-        mensagemErro.textContent = "Por favor, preencha todos os campos."; // Exibe a mensagem de erro
+        mensagemErro.textContent = "Preencha todos os campos."; // Exibe a mensagem de erro
         console.log("Por favor, preencha todos os campos.");
         return;
     }
 
     if (!ValidarEmail(email)) { // Verifica se o email está no formato correto
-        mensagemErro.textContent = "O email não está no formato correto."; // Exibe a mensagem de erro
+        mensagemErro.textContent = "Digite um e-mail no formato nome@exemplo.com."; // Exibe a mensagem de erro
         console.log("O email não está no formato correto.");
         return;
     }
@@ -89,7 +90,7 @@ FormularioLogin.addEventListener("submit", function (event) {
         return;
     }
 
-    console.log("Todos os campos estão preenchidos corretamente: ", email, senha); // Exibe uma mensagem de sucesso no console
+    console.log("Todos os campos estão preenchidos corretamente."); // Exibe uma mensagem de sucesso no console
 
     limparMensagemErro(); // Limpa a mensagem de erro se os campos estiverem preenchidos
 
@@ -118,19 +119,15 @@ FormularioLogin.addEventListener("submit", function (event) {
     })
     .catch(function(error) { // Captura qualquer erro que ocorra durante a requisição
         console.error("Erro na requisição:", error); // Exibe o erro no console
-        mensagemErro.textContent = "Erro na requisição"; // Exibe uma mensagem de erro genérica
+        mensagemErro.textContent = "Não foi possível entrar. Verifique sua conexão e tente novamente."; // Exibe uma mensagem de erro genérica
     });
 });
 
 
 mostrar_senha.addEventListener('click', function() {
-    if (CampoSenha.type === 'password') {
-        CampoSenha.type = 'text';
-        mostrar_senha.src = '../Imagens/icons_olho_aberto.png';
-        mostrar_senha.alt = 'Visualizar senha;'
-    } else {
-        CampoSenha.type = 'password';
-        mostrar_senha.src = '../Imagens/icons_olho_fechado.png';
-    }
+    const mostrando = CampoSenha.type === 'password';
+    CampoSenha.type = mostrando ? 'text' : 'password';
+    iconeOlho.src = mostrando ? '../Imagens/icons_olho_aberto.png' : '../Imagens/icons_olho_fechado.png';
+    mostrar_senha.setAttribute('aria-pressed', String(mostrando));
 });
 

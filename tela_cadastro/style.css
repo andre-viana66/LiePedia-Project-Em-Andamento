@@ -1,3 +1,9 @@
+body{
+    margin: 0;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif; /* mesma pilha da tela principal */
+    color: #1a1a1a;
+}
+
 .Logo{
     position: absolute;
     top: 20px;
@@ -9,85 +15,105 @@
 section{
     background-color: white;
     border-radius: 8px;
-    height: auto;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    max-width: 300px;
-    margin-left: 120px;
+    width: 100%;
+    max-width: 340px;
+    box-sizing: border-box;
 }
 
 .TituloCaixa{
    font-size: 28px;
    font-weight: bold;
-   margin-bottom: 4px;
+   line-height: 1.1;
+   margin: 0 0 4px;
    color: #1a1a1a;
 }
 
 .SubtituloCaixa{
     color: #666;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
 label{
+   display: block;
    font-weight: bold;
    font-size: 14px;
-   margin-bottom: 10px;
-   font-family: 'Inter', Sans-serif;
+   margin-bottom: 6px;
 }
 
 input{
     width: 100%;
-    height: 20px;
+    min-height: 40px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* evita zoom automático do iOS */
+    font-family: inherit;
     margin-bottom: 16px;
+    padding: 0 10px;
     box-sizing: border-box;
 }
 
-input:focus{
-    outline: none;
+input:focus-visible{
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
     border-color: #2563eb;
-    box-shadow:0 0 0 1px rgba(37,99,235,0.1)
 }
 
-button{
+button[type="submit"]{
+    display: block;
+    width: 100%;
+    min-height: 40px;
     background-color: #1C2B4A;
     color: white;
     border: none;
-    padding: 4px 119px;
+    padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
     font-weight: bold;
     transition: filter 0.2s ease;
 }
 
-button:hover{
-    opacity: 0.8;
-    filter: brightness(1.15)
+button[type="submit"]:hover{
+    filter: brightness(1.15);
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
 }
 
 .TextoEntrar{
     text-align: center;
-
+    margin-bottom: 0;
 }
 
 .MensagemDeErro{
     color: red;
     font-weight: bold;
     font-size: 14px;
-    margin-top: 10px;
+    margin: 10px 0 0;
     text-align: center;
+}
+
+.MensagemDeErro:empty{
+    display: none;
+}
+
+.DicaSenha{
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 6px 0 16px;
 }
 
 .EntrarLink{
     color: #2563eb;
-    margin-bottom: 16px;
-    margin-top: 10px;
     text-decoration: none;
-    display: inline;
 }
 
 .EntrarLink:hover{
@@ -100,30 +126,167 @@ button:hover{
     justify-content: center;
     gap: 60px;
     min-height: 100vh;
+    padding: 24px 16px; /* igual em cima e embaixo: caixa no centro exato */
+    box-sizing: border-box;
 }
-.LogoMax{
-    position:static;
-    width: 500px;
-    height: auto;
 
+.LogoMax{
+    width: 500px;
+    max-width: 45vw;
+    height: auto;
 }
 
 .LabelOlhosFechadosSenha{
     position: relative;
-    margin-bottom: 16px;
 }
 
 .LabelOlhosFechadosSenha input{
-    padding-right: 40px;
+    padding-right: 44px;
     margin-bottom: 0;
 }
 
-.Icon_Olhos_Fechados_Senha{
+.BotaoOlho{
     position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Icon_Olhos_Fechados_Senha{
     height: 18px;
     width: 18px;
-    cursor: pointer;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 12px;
+}
+
+/* abaixo disso a logo grande não cabe ao lado do formulário */
+@media (max-width: 900px){
+    .LogoMax{
+        display: none;
+    }
+}
+
+/* Desktop: a logo grande já aparece ao lado da caixa, então a pequena do canto sai */
+@media (min-width: 901px){
+    .Logo{
+        display: none;
+    }
+}
+
+/* Celular/tablet: a logo pequena do canto fica; o mesmo espaço em cima e embaixo mantém a caixa centralizada sem ficar por baixo dela */
+@media (max-width: 900px){
+    .Fundo{
+        padding-block: 140px;
+    }
+}
+
+/* ===== SUAVIZACAO: fundo, cantos, sombras e transições mais suaves ===== */
+
+body{
+    background-color: white; /* fundo branco: a sombra é o que separa a logo e o formulário */
+}
+
+/* As logos têm fundo próprio (não é branco puro): viram cartões arredondados como a caixa do formulário */
+.LogoMax{
+    border-radius: 16px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 16px 40px -12px rgba(0, 0, 0, 0.20); /* sombra neutra, um pouco mais marcada para separar do fundo branco */
+}
+
+.Logo{
+    border-radius: 12px;
+}
+
+section{
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 16px 40px -12px rgba(0, 0, 0, 0.20); /* sombra neutra, um pouco mais marcada para separar do fundo branco */
+}
+
+input{
+    border-radius: 10px;
+    background-color: white;
+    transition-property: border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+}
+
+input:hover{
+    border-color: #9ca3af;
+}
+
+input:focus-visible{
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.12); /* halo suave em volta do contorno */
+}
+
+button[type="submit"]{
+    border-radius: 10px;
+    transition-property: filter, box-shadow, scale;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+}
+
+button[type="submit"]:hover{
+    box-shadow: 0 6px 16px -4px rgba(28, 43, 74, 0.35);
+}
+
+button[type="submit"]:active{
+    scale: 0.96; /* leve "afundar" ao clicar */
+}
+
+.MensagemDeErro{
+    color: #dc2626; /* vermelho mais suave e legível: contraste 4.8:1 (antes 4.0:1) */
+}
+
+@media (prefers-reduced-motion: reduce){
+    button[type="submit"]:active{
+        scale: 1;
+    }
+}
+
+/* ===== PALETA GRAFITE: botões, links e foco no mesmo preto/cinza da logo ===== */
+
+button[type="submit"]{
+    background-color: #1f1f1f;
+}
+
+button[type="submit"]:hover{
+    box-shadow: 0 6px 16px -4px rgba(31, 31, 31, 0.35);
+}
+
+/* Links da mesma cor do texto: o sublinhado é o que mostra que são clicáveis */
+a[href]{
+    color: #1f1f1f;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+a[href]:hover{
+    text-decoration-thickness: 2px;
+}
+
+input:focus-visible{
+    outline-color: #1f1f1f;
+    border-color: #1f1f1f;
+    box-shadow: 0 0 0 5px rgba(31, 31, 31, 0.10);
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline-color: #1f1f1f;
 }
