@@ -8,6 +8,7 @@ $permitidos = [
     'tela_cadastro/cadastro',
     'tela_esqueceu_senha/esqueceu_senha',
     'tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha',
+    'tela_esqueceu_senha/tela_validacao_token/validacao_token',
 ];
 
 $arquivo = $_GET['arquivo'] ?? '';

@@ -17,3 +17,6 @@ backend/config/database.php
 *.dump
 .vercel
 .env*
+
+# Pasta com cópias de senhas (nunca subir)
+_env/

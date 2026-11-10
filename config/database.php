@@ -1,4 +1,12 @@
 <?php
+// No PC: carrega o arquivo .env automaticamente (na Vercel ele não existe; lá valem as Environment Variables).
+$arquivoEnv = __DIR__ . '/../.env';
+if (is_file($arquivoEnv)) {
+    foreach (file($arquivoEnv, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $linha) {
+        if (preg_match('/^(\w+)=(.*)$/', $linha, $m)) putenv("$m[1]=$m[2]"); // ignora comentários (#)
+    }
+}
+
 // Na Vercel os dados vêm das Environment Variables (banco do Supabase).
 // No seu PC, sem essas variáveis, usa o PostgreSQL local (valores depois do ?:).
 $host = getenv('DB_HOST') ?: 'localhost'; // Host do banco de dados

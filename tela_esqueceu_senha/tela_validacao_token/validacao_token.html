@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Liepedia - Validação de Token</title>
+</head>
+<body>
+    <img 
+        src="..\..\Imagens\\logo1.png" 
+        class="Logo"
+        alt="">
+    <main>
+        <div class="FundoValidacaoToken">
+            <section class="ValidacaoToken">
+                <h1 class="TituloValidacaoToken">Validação de Token</h1>
+                <p class="Subtitulo">Informe o token enviado para o seu e-mail</p>
+                <form class="FormularioValidacaoToken" id="FormularioValidacaoToken">
+
+                    <label class="TextToken" for="Token">Token:</label>
+                    <input
+                        type="text"
+                        class="LabelToken"
+                        id="token"
+                        required
+                        name="token"
+                        placeholder="Digite o token">
+
+                    <p class="MensagemErro" id="MensagemErro"></p>
+                    <p class="MensagemSucesso" id="MensagemSucesso"></p>
+
+                    <button type="submit" class="BtnValidarToken">Validar token</button>
+
+                </form>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <img 
+        src="..\..\Imagens\\logo1.png" 
+        class="Logo1"
+        alt="">
+</body>

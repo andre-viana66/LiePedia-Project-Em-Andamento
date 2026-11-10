@@ -71,8 +71,11 @@ if ($usuarioId) { // Verifica se o usuário existe no banco de dados
 
         $site = (getenv('VERCEL') ? 'https://' : 'http://') . $_SERVER['HTTP_HOST']; // localhost:8000 no PC, endereço da Vercel na nuvem
         $envio_email->Subject = 'Recuperação de senha'; // Define o assunto do email
-        $envio_email->Body = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>' . $site . '/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?token=</link> Seu token é: ' . $token; // Define o corpo do email
-        $envio_email->AltBody = 'Olá, você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha: <link>' . $site . '/tela_esqueceu_senha/tela_troca_de_senha/troca_de_senha.html?token=</link> Seu token é: ' . $token; // Define o corpo alternativo do email
+        $linkToken = $site . '/tela_esqueceu_senha/tela_validacao_token/validacao_token.html?token=' . $token; // sem acentos no caminho, para o link não quebrar no email
+        $envio_email->Body = 'Olá, você solicitou a recuperação de senha.<br><br>'
+            . '<a href="' . $linkToken . '">Clique aqui para redefinir sua senha</a><br><br>'
+            . 'Seu token é: <b>' . $token . '</b>'; // Versão HTML do email (a que o Gmail mostra)
+        $envio_email->AltBody = "Olá, você solicitou a recuperação de senha.\n\nAcesse o link para redefinir sua senha: $linkToken\n\nSeu token é: $token"; // Versão só texto (para leitores de email sem HTML)
 
         if ($envio_email->send()) { // Tenta enviar o email
             echo json_encode([

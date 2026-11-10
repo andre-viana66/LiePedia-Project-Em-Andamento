@@ -81,7 +81,7 @@ Navegador ──(HTML/CSS/JS)──> Vercel
 | `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` | Conexão com o banco do Supabase |
 | `EMAIL_PASSWORD` | Senha de app do Gmail `liepediasuporte@gmail.com` |
 
-Na Vercel elas ficam em **Settings → Environment Variables**. No PC, ficam no arquivo `.env` (que está no `.gitignore` e não vai para o GitHub).
+Na Vercel elas ficam em **Settings → Environment Variables**. No PC, ficam no arquivo `.env` (que está no `.gitignore` e não vai para o GitHub); o `config/database.php` carrega esse arquivo automaticamente.
 
 > ⚠️ Ao criar um **novo arquivo `.php`** que o front-end chama, adicione o caminho dele na lista `$permitidos` de `api/index.php`. Sem isso, o site responde 404 (por segurança, só os arquivos da lista podem ser executados).
 
@@ -101,11 +101,8 @@ Na Vercel elas ficam em **Settings → Environment Variables**. No PC, ficam no 
    ```
 
 2. Escolha o banco:
-   - **PostgreSQL local:** crie o banco `Liepedia-Database` e rode `database/schema.sql` nele. O `config/database.php` usa `localhost`, usuário `postgres` e senha `12345` quando não há variáveis de ambiente.
-   - **Banco do Supabase:** peça o arquivo `.env` para quem administra o projeto e carregue as variáveis antes de iniciar o servidor (PowerShell):
-     ```powershell
-     Get-Content .env | Where-Object { $_ -match '^\w+=' } | ForEach-Object { $k, $v = $_ -split '=', 2; Set-Item "env:$k" $v }
-     ```
+   - **PostgreSQL local:** crie o banco `Liepedia-Database` e rode `database/schema.sql` nele. O `config/database.php` usa `localhost`, usuário `postgres` e senha `12345` quando não existe o arquivo `.env`.
+   - **Banco do Supabase:** peça o arquivo `.env` para quem administra o projeto e coloque na raiz do projeto. O `config/database.php` lê esse arquivo sozinho.
 
 3. Inicie o servidor embutido do PHP na pasta do projeto:
    ```bash

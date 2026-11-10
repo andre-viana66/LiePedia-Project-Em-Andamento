@@ -19,3 +19,19 @@ CREATE TABLE IF NOT EXISTS token_redefinicao (
 -- Só o usuário do PHP (liepedia_app) tem acesso, pelas policies abaixo.
 ALTER TABLE usuarios          ENABLE ROW LEVEL SECURITY;
 ALTER TABLE token_redefinicao ENABLE ROW LEVEL SECURITY;
+
+-- ---------------------------------------------------------------
+-- Usuário que o PHP usa para conectar (DB_USER na Vercel).
+-- Rode só ao criar um banco NOVO. Troque a senha antes de rodar.
+-- No Supabase o login fica: liepedia_app.<id-do-projeto>
+-- ---------------------------------------------------------------
+-- CREATE ROLE liepedia_app LOGIN PASSWORD 'troque-esta-senha';
+-- GRANT USAGE ON SCHEMA public TO liepedia_app;
+-- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO liepedia_app;
+
+-- Permissões das tabelas (repita este bloco para CADA tabela nova)
+GRANT SELECT, INSERT, UPDATE, DELETE ON usuarios TO liepedia_app;
+CREATE POLICY app_acesso_total ON usuarios FOR ALL TO liepedia_app USING (true) WITH CHECK (true);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON token_redefinicao TO liepedia_app;
+CREATE POLICY app_acesso_total ON token_redefinicao FOR ALL TO liepedia_app USING (true) WITH CHECK (true);
