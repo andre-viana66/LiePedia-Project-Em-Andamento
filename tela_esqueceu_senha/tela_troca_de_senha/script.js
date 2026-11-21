@@ -56,14 +56,17 @@ formulario.addEventListener("submit", function(event) {
     limparErro();
     mensagemSucesso.textContent = "";
 
-    fetch("/trocar-senha", {
+    const token = new URLSearchParams(window.location.search).get("token") || ""; // Token que veio da tela de validação (?token=...)
+
+    fetch("troca_de_senha.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
             senha: senha,
-            confirmarSenha: confirmarSenha
+            confirmarSenha: confirmarSenha,
+            token: token
         })
     })
     .then(function (response) { // Recebe a resposta da requisição
@@ -72,8 +75,10 @@ formulario.addEventListener("submit", function(event) {
 
     .then(function (data) { // Recebe os dados do servidor
         if (data.sucesso) { // Verifica se o login foi bem-sucedido
-            console.log("Email enviado com sucesso!"); // Exibe uma mensagem de sucesso no console
-            mensagemSucesso.textContent = data.mensagem; // Exibe a mensagem de sucesso recebida do servidor
+            mensagemSucesso.textContent = data.mensagem + " Redirecionando para o login..."; // Mostra que deu certo antes de sair da tela
+            setTimeout(function () {
+                window.location.href = "../../tela_login/login-index.html"; // ../../ sobe 2 pastas (tela_troca_de_senha → tela_esqueceu_senha → raiz)
+            }, 2000); // Espera 2 segundos para a pessoa conseguir ler a mensagem
         } else {
             mensagemErro.textContent = data.mensagem; // Exibe a mensagem de erro recebida do servidor
             console.log(data.mensagem); // Exibe a mensagem de erro no console

@@ -35,3 +35,19 @@ CREATE POLICY app_acesso_total ON usuarios FOR ALL TO liepedia_app USING (true) 
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON token_redefinicao TO liepedia_app;
 CREATE POLICY app_acesso_total ON token_redefinicao FOR ALL TO liepedia_app USING (true) WITH CHECK (true);
+
+
+CREATE TABLE IF NOT EXISTS senha_utilizada (
+    id                SERIAL PRIMARY KEY,
+    usuario_id        INTEGER      NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    senha_hash        VARCHAR(255) NOT NULL, -- hash do password_hash(), nunca a senha pura
+    senha_alterada_em TIMESTAMPTZ  NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS senha_utilizada_usuario_id_idx ON senha_utilizada(usuario_id);
+
+ALTER TABLE senha_utilizada ENABLE ROW LEVEL SECURITY;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON senha_utilizada TO liepedia_app;
+GRANT USAGE, SELECT ON SEQUENCE senha_utilizada_id_seq TO liepedia_app; 
+CREATE POLICY app_acesso_total ON senha_utilizada FOR ALL TO liepedia_app USING (true) WITH CHECK (true);
